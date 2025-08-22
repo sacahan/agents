@@ -1,33 +1,31 @@
 # src/research_crew/config/tasks.yaml
 research_task:
   description: >
-    Conduct thorough research on company {company}. Focus on:
-    1. Current company status and health
-    2. Historical company performance
-    3. Major challenges and opportunities
-    4. Recent news and events
-    5. Future outlook and potential developments
+    針對公司 {company} 進行徹底研究。重點包括：
+    1. 公司目前狀況與健康情形
+    2. 公司歷史表現
+    3. 主要挑戰與機會
+    4. 近期新聞與事件
+    5. 未來展望與潛在發展
 
-    Make sure to organize your findings in a structured format with clear sections.
+    請將研究結果以結構化格式並清楚分段整理。
   expected_output: >
-    A comprehensive research document with well-organized sections covering
-    all the requested aspects of {company}. Include specific facts, figures,
-    and examples where relevant.
+    一份全面性的研究文件，內容需有良好組織，涵蓋 {company} 所有要求面向。
+    請在適當處提供具體事實、數據與範例。
   agent: researcher
 
 analysis_task:
   description: >
-    Analyze the research findings and create a comprehensive report on {company}.
-    Your report should:
-    1. Begin with an executive summary
-    2. Include all key information from the research
-    3. Provide insightful analysis of trends and patterns
-    4. Offer a market outlook for company, noting that this should not be used for trading decisions
-    5. Be formatted in a professional, easy-to-read style with clear headings
+    分析研究結果並撰寫一份關於 {company} 的綜合報告。
+    報告需：
+    1. 以執行摘要開頭
+    2. 包含所有研究重點資訊
+    3. 提供趨勢與模式的深入分析
+    4. 提供公司市場展望，並註明不可作為交易決策依據
+    5. 以專業、易讀的格式並有清楚標題呈現
   expected_output: >
-    A polished, professional report on {company} that presents the research
-    findings with added analysis and insights. The report should be well-structured
-    with an executive summary, main sections, and conclusion.
+    一份精緻、專業的 {company} 報告，內容呈現研究結果並加入分析與見解。
+    報告需結構良好，包含執行摘要、主體段落與結論。
   agent: analyst
   context:
     - research_task

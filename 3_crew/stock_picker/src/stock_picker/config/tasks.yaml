@@ -1,16 +1,16 @@
 find_trending_companies:
   description: >
-    Find the top trending companies in the news in {sector} by searching the latest news. Find new companies that you've not found before.
+    尋找 {sector} 中新聞中的熱門公司，通過搜尋最新新聞找到新公司，避免重複選擇已找到的公司。
   expected_output: >
-    A list of trending companies in {sector}
+    {sector} 中的熱門公司清單
   agent: trending_company_finder
   output_file: output/trending_companies.json
 
 research_trending_companies:
   description: >
-    Given a list of trending companies, provide detailed analysis of each company in a report by searching online
+    根據熱門公司清單，通過線上搜尋為每家公司提供詳細分析報告。
   expected_output: >
-    A report containing detailed analysis of each company
+    包含每家公司詳細分析的報告
   agent: financial_researcher
   context:
     - find_trending_companies
@@ -18,11 +18,11 @@ research_trending_companies:
 
 pick_best_company:
   description: >
-    Analyze the research findings and pick the best company for investment.
-    Send a push notification to the user with the decision and 1 sentence rationale.
-    Then respond with a detailed report on why you chose this company, and which companies were not selected.
+    分析研究結果並挑選最佳投資公司。
+    向用戶發送推送通知，包含決定和一句話的理由。
+    然後回應一份詳細報告，說明為何選擇該公司，以及未選擇其他公司的原因。
   expected_output: >
-    The chosen company and why it was chosen; the companies that were not selected and why they were not selected.
+    被選中的公司及選擇原因；未被選中的公司及未選擇原因。
   agent: stock_picker
   context:
     - research_trending_companies

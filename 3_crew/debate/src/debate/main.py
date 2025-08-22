@@ -18,7 +18,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        'motion': 'There needs to be strict laws to regulate LLMs',
+        'motion': '因應可能發生的缺電危機，針對已經封存的核電廠，是否應該重新啟用？',
     }
     
     try:
