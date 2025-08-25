@@ -1,4 +1,4 @@
-from crewai import Agent, Crew, Process, Task
+from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 
 
@@ -10,22 +10,29 @@ class EngineeringTeam():
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
 
+    gpt_5_mini = LLM(
+        model="openai/gpt-5-mini",
+        drop_params=True,
+        additional_drop_params=["stop", "temperature"],
+    )
+
     @agent
     def engineering_lead(self) -> Agent:
         return Agent(
             config=self.agents_config['engineering_lead'],
+            llm=self.gpt_5_mini,
             verbose=True,
         )
 
     @agent
     def backend_engineer(self) -> Agent:
         return Agent(
-            config=self.agents_config['backend_engineer'],
+            config=self.agents_config["backend_engineer"],
             verbose=True,
             allow_code_execution=True,
             code_execution_mode="safe",  # Uses Docker for safety
-            max_execution_time=500, 
-            max_retry_limit=3 
+            max_execution_time=500,
+            max_retry_limit=3,
         )
     
     @agent

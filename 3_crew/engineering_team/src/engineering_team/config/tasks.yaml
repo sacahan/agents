@@ -1,22 +1,22 @@
 design_task:
   description: >
-    Take the high level requirements described here and prepare a detailed design for the engineer;
-    everything should be in 1 python module, but outline the classes and methods in the module.
-    Here are the requirements: {requirements}
-    IMPORTANT: Only output the design in markdown format, laying out in detail the classes and functions in the module, describing the functionality.
+    根據這裡描述的高階需求，為工程師準備詳細設計；
+    一切都應在一個 python 模組中完成，但請列出該模組中的類別與方法。
+    這裡是需求：{requirements}
+    重要：只輸出 markdown 格式的設計，詳細列出模組中的類別與函式，並描述其功能。
   expected_output: >
-    A detailed design for the engineer, identifying the classes and functions in the module.
+    一份給工程師的詳細設計，明確指出模組中的類別與函式。
   agent: engineering_lead
   output_file: output/{module_name}_design.md
 
 code_task:
   description: >
-    Write a python module that implements the design described by the engineering lead, in order to achieve the requirements.
-    Here are the requirements: {requirements}
+    撰寫一個 python 模組，實作工程主管所描述的設計，以達成需求。
+    這裡是需求：{requirements}
   expected_output: >
-    A python module that implements the design and achieves the requirements.
-    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
-    The output should be valid Python code that can be directly saved to a file and executed.
+    一個實作設計並達成需求的 python 模組。
+    重要：只輸出原始 Python 程式碼，不要有任何 markdown 格式、程式碼區塊分隔符或反引號。
+    輸出內容應為可直接儲存為檔案並執行的有效 Python 程式碼。
   agent: backend_engineer
   context:
     - design_task
@@ -24,14 +24,14 @@ code_task:
 
 frontend_task:
   description: >
-    Write a gradio UI in a module app.py that demonstrates the given backend class in {module_name}.
-    Assume there is only 1 user, and keep the UI very simple indeed - just a prototype or demo.
-    Here are the requirements: {requirements}
+    在 app.py 模組中撰寫 gradio UI，展示 {module_name} 中指定的後端類別。
+    假設只有 1 位使用者，UI 請保持非常簡單——僅作為原型或展示。
+    這裡是需求：{requirements}
   expected_output: >
-    A gradio UI in module app.py that demonstrates the given backend class.
-    The file should be ready so that it can be run as-is, in the same directory as the backend module, and it should import the backend class from {module_name}.
-    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
-    The output should be valid Python code that can be directly saved to a file and executed.
+    一個在 app.py 模組中的 gradio UI，展示指定的後端類別。
+    檔案應可直接執行，與後端模組放在同一目錄，並從 {module_name} 匯入後端類別。
+    重要：只輸出原始 Python 程式碼，不要有任何 markdown 格式、程式碼區塊分隔符或反引號。
+    輸出內容應為可直接儲存為檔案並執行的有效 Python 程式碼。
   agent: frontend_engineer
   context:
     - code_task
@@ -39,11 +39,11 @@ frontend_task:
 
 test_task:
   description: >
-    Write unit tests for the given backend module {module_name} and create a test_{module_name} in the same directory as the backend module.
+    為指定的後端模組 {module_name} 撰寫單元測試，並在同一目錄建立 test_{module_name}。
   expected_output: >
-    A test_{module_name} module that tests the given backend module.
-    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
-    The output should be valid Python code that can be directly saved to a file and executed.
+    一個 test_{module_name} 模組，測試指定的後端模組。
+    重要：只輸出原始 Python 程式碼，不要有任何 markdown 格式、程式碼區塊分隔符或反引號。
+    輸出內容應為可直接儲存為檔案並執行的有效 Python 程式碼。
   agent: test_engineer
   context:
     - code_task
